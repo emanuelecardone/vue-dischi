@@ -23,6 +23,4 @@ export default {
         /* Nel caso continuassi la web-app in futuro devo rimuovere questo vh-100 */
         height: calc(100vh - 100px);
     }
-
-
 </style>

@@ -20,6 +20,5 @@ export default {
 
 <style lang="scss">
 @import './style/general.scss';
-@import './style/size-space.scss'
-
+@import './style/size-space.scss';
 </style>
