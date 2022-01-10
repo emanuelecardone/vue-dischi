@@ -10,7 +10,7 @@
         <Alien v-if="cellIndex === alienPosition && (gameStatus || levelsStatus)" class="fs_20" />
         <!-- Questo span è di aiuto per vedere l'indice della cella, sarà da eliminare quando ho finito tutto il programma, 
         viene stampato solo se dentro non c'è l'user o l'alieno così da evitare bug grafici -->
-        <!-- <span v-else-if="gameStatus" class="text-dark fw-bold">{{cellIndex}}</span> -->
+        <!-- <span v-else-if="gameStatus" class="text-white fw-bold">{{cellIndex}}</span> -->
     </div>
 </template>
 

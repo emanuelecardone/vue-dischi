@@ -14,7 +14,7 @@
             </ul>
             <ul class="user p-0">
                 <li>Your character. You can change it later <User class="fas fa-sun text-primary" /></li>
-                <li>The gamepad, you chan also play with W,A,S,D or arrows <GamePad /></li>
+                <li>The gamepad, you can also play with W,A,S,D or arrows <GamePad /></li>
             </ul>
         </div>
         <Button @click.native="leaveSection" :msg="'Okay'" />
