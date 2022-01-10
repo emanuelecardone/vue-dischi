@@ -1,7 +1,7 @@
 <template>
     <main class="w-100 position-relative">
-        <FilterBar class="position-absolute" />
-        <DisksList />
+        <FilterBar class="position-absolute" :disksList="disks" @sendFilter="getFilter($event)" />
+        <DisksList :filters="userFilter" />
     </main>
 </template>
 
@@ -14,6 +14,23 @@ export default {
     components: {
         FilterBar,
         DisksList
+    },
+    data: function(){
+        return {
+            // Variabile nella quale salverò l'array di dischi in arrivo da DisksList
+            disks: null,
+            // Variabile nella quale salverò l'oggetto con gli indici dei filtri
+            userFilter: {
+                genre: 'All',
+                artist: 'All'
+            }
+        };
+    },
+    methods: {
+        // Funzione per ricevere gli index dei filtri da FilterBar
+        getFilter: function(filters){
+            this.userFilter = filters;
+        }
     }
 }
 </script>
