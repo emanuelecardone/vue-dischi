@@ -2,23 +2,11 @@
     <div class="filter_wrapper">
         <select class="genre_select" v-model="filters.genre" @change="switchFilter">
             <option value="All">All</option>
-            <option value="Rock">Rock</option>
-            <option value="Pop">Pop</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Jazz">Jazz</option>
+            <option v-for="genre,index in availableFilters.genre" :key="index" :value="genre">{{genre}}</option>
         </select>
         <select class="artist_select" v-model="filters.artist" @change="switchFilter">
             <option value="All">All</option>
-            <option value="Bon Jovi">Bon Jovi</option>
-            <option value="Queen">Queen</option>
-            <option value="Sting">Sting</option>
-            <option value="Steve Gadd Band">Steve Gadd Band</option>
-            <option value="Iron Maiden">Iron Maiden</option>
-            <option value="Eric Clapton">Eric Clapton</option>
-            <option value="Deep Purple">Deep Purple</option>
-            <option value="Metallica">Metallica</option>
-            <option value="Dave Weckl">Dave Weckl</option>
-            <option value="Michael Jacjson">Michael Jackson</option>
+            <option v-for="artist,index in availableFilters.artist" :key="index" :value="artist">{{artist}}</option>
         </select>
     </div>
 </template>
@@ -27,7 +15,8 @@
 export default {
     name: 'FilterBar',
     props: {
-        disksList: Array
+        disksList: Array,
+        availableFilters: Object
     },
     data: function(){
         return {
@@ -43,7 +32,7 @@ export default {
         // Funzione per inviare l'index del filtro scelto a Main
         switchFilter: function(){
             this.$emit('sendFilter', this.filters);
-            console.log (this.filters)
+            console.log (this.availableFilters)
         }
     }
 }

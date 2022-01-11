@@ -39,8 +39,25 @@ export default {
             // Array che riempirò con quello di dischi che mi darà l'api
             disksArray: [],
             // Definisco per comodità il numero di dischi totale
-            disksAmount: null
+            disksAmount: null,
+            // Oggetto con i 2 array per genere e artista
+            filterArrays: {
+                genre: [],
+                artist: []
+            }
         };
+    },
+    methods: {
+        // Funzione per creare gli array di generi e artisti
+        defineFilters: function(){
+            this.disksArray.forEach((disk) => {
+                !this.filterArrays.genre.includes(disk.genre) ? this.filterArrays.genre.push(disk.genre) : null;
+                !this.filterArrays.artist.includes(disk.author) ? this.filterArrays.artist.push(disk.author) : null;
+            });
+
+            // Emit per passare i due array a Main
+            this.$emit('sendPossibleFilters', this.filterArrays);
+        }
     },
     computed: {
         // Funzione che ritorna l'array da dare in display, in base al filtro o meno
@@ -75,6 +92,8 @@ export default {
             this.disksArray = response.data.response;
             // Definisco quindi la quantità di dischi in base alla lunghezza dell'array dell'api
             this.disksAmount = response.data.response.length;
+            // Richiamo la funzione per creare gli array con genere e artista
+            this.defineFilters();
         });
     }
 }

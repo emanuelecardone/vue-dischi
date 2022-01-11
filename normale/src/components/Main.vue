@@ -1,7 +1,7 @@
 <template>
     <main class="w-100 position-relative">
-        <FilterBar class="position-absolute" :disksList="disks" @sendFilter="getFilter($event)" />
-        <DisksList :filters="userFilter" />
+        <FilterBar class="position-absolute" :disksList="disks" :availableFilters="possibleFilters" @sendFilters="getFilters($event)" />
+        <DisksList :filters="userFilter"  @sendPossibleFilters="getPossibleFilters($event)" />
     </main>
 </template>
 
@@ -23,13 +23,20 @@ export default {
             userFilter: {
                 genre: 'All',
                 artist: 'All'
-            }
+            },
+            // Oggetto che verrà riempito con tutti i generi e artisti possibili e verrà passato a FilterBar come props
+            possibleFilters: {}
         };
     },
     methods: {
         // Funzione per ricevere gli index dei filtri da FilterBar
         getFilter: function(filters){
             this.userFilter = filters;
+        },
+        // Funzione per ricevere i generi e artisti possibili
+        getPossibleFilters: function(possibleFiltersObject){
+            this.possibleFilters = possibleFiltersObject;
+            console.log(this.po)
         }
     }
 }
