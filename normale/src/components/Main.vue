@@ -1,6 +1,6 @@
 <template>
     <main class="w-100 position-relative">
-        <FilterBar class="position-absolute" :disksList="disks" :availableFilters="possibleFilters" @sendFilters="getFilters($event)" />
+        <FilterBar class="position-absolute" :disksList="disks" :availableFilters="possibleFilters" @sendFilter="getFilter($event)" />
         <DisksList :filters="userFilter"  @sendPossibleFilters="getPossibleFilters($event)" />
     </main>
 </template>
@@ -36,7 +36,6 @@ export default {
         // Funzione per ricevere i generi e artisti possibili
         getPossibleFilters: function(possibleFiltersObject){
             this.possibleFilters = possibleFiltersObject;
-            console.log(this.po)
         }
     }
 }

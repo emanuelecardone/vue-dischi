@@ -32,7 +32,7 @@ export default {
         // Funzione per inviare l'index del filtro scelto a Main
         switchFilter: function(){
             this.$emit('sendFilter', this.filters);
-            console.log (this.availableFilters)
+            console.log (this.filters)
         }
     }
 }
